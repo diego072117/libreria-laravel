@@ -3,10 +3,11 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Lend;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -27,23 +28,41 @@ class User extends Authenticatable
         'password',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
+    protected $appends = ['full_name'];
+
+ 
     protected $hidden = [
         'password'
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    // protected $casts = [
-    //     'email_verified_at' => 'boolean',
-    // ];
+    protected $casts = [
+        'created_at' => 'datatime:Y-m-d',
+        'updated_at' => 'datatime:Y-m-d',
+    ];
 
+    // Accesor (get)
+    public function getFullNameAttribute(){
+        
+        return "{$this->name} {$this->last_name}";
+
+    }
+
+    // Mutador (create - update)
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
+
+    // Relations --------------------------------------------------------------------------------
+
+    public function CustomerLends(): HasMany
+    {
+        return $this->hasMany(Lend::class, 'customer_user_id', 'id');
+    }
+
+    public function OwnerLends(): HasMany
+    {
+        return $this->hasMany(Lend::class, 'owner_user_id', 'id');
+    }
     
 }

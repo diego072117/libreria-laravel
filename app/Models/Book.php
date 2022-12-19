@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Lend;
 use App\Models\Author;
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
@@ -28,5 +29,10 @@ class Book extends Model
     public function Author()
     {
         return $this->belongsTo(Author::class, 'author_id', 'id');
+    }
+
+    public function Lends(): HasMany
+    {
+        return $this->hasMany(Lend::class, 'book_id', 'id');
     }
 }
