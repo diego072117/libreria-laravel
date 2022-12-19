@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('lends', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('book_id')->unsigned(); //libro prestado
             $table->bigInteger('owner_user_id')->unsigned(); //biblotecario
             $table->bigInteger('customer_user_id')->unsigned(); // cliente
-            $table->bigInteger('book_id')->unsigned(); //libro prestado
             $table->date('date_out');
             $table->date('date_in');
             $table->enum('status', ['lend', 'returned']);

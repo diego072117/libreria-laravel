@@ -5,15 +5,16 @@ namespace App\Models;
 use App\Models\Book;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Lend extends Model
 {
-    use HasFactory;
+    use HasFactory,SoftDeletes;
 
     protected $fillable = [
-        'owner_user_id',
-        'customer_user_id',
+        'owner_user_id', //bibliotecario
+        'customer_user_id',//cliente
         'book_id',
         'date_out',
         'date_in',

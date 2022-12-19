@@ -1,0 +1,111 @@
+{
+	"info": {
+		"_postman_id": "faa1acae-3f41-4ab6-8afe-880d95935f88",
+		"name": "Clase_laravel",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24991934"
+	},
+	"item": [
+		{
+			"name": "traer todos los usuarios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/users/GetAllUsers/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"GetAllUsers",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registrar usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"number_id\": \"543976125\",\r\n\"name\": \"santiado\",\r\n\"last_name\": \"carreño\",\r\n\"email\": \"s@gmail.com\",\r\n\"password\": \"123456789\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/users/CreateUser/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"CreateUser",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actualiza un usuario",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"number_id\": \"543976125\",\r\n\"name\": \"Santiago\",\r\n\"last_name\": \"Mancera\",\r\n\"email\": \"s@gmail.com\",\r\n\"password\": \"123456789\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/users/UpdateUser/22",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"UpdateUser",
+						"22"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "eliminar usuario",
+			"request": {
+				"method": "DELETE",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
