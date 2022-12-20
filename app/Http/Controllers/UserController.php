@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\User\CreateUserRequest;
+use App\Http\Requests\User\UpdateUserRequest;
 
 class UserController extends Controller
 {
@@ -34,7 +36,7 @@ class UserController extends Controller
 
     }
 
-    public function createUser(Request $request){
+    public function createUser(CreateUserRequest $request){
 
         $user = new User($request->all());
         $user->save();
@@ -42,7 +44,7 @@ class UserController extends Controller
 
     }
 
-    public function updateUsers(User $user, Request $request){
+    public function updateUsers(User $user, UpdateUserRequest $request){
 
         
         $user->update($request->all());

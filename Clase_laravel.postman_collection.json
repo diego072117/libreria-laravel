@@ -35,10 +35,16 @@
 			"name": "registrar usuario",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "X-Requested-With",
+						"value": "XMLHttpRequest",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"number_id\": \"543976125\",\r\n\"name\": \"santiado\",\r\n\"last_name\": \"carreño\",\r\n\"email\": \"s@gmail.com\",\r\n\"password\": \"123456789\"\r\n}",
+					"raw": "{\r\n\"number_id\": \"5439761\",\r\n\"name\": \"santiado\",\r\n\"last_name\": \"\",\r\n\"email\": \"saaaaa@gmail.com\",\r\n\"password\": \"1234567\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -46,7 +52,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/users/CreateUser/",
+					"raw": "http://127.0.0.1:8000/api/Users/CreateUser/",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -57,7 +63,7 @@
 					"port": "8000",
 					"path": [
 						"api",
-						"users",
+						"Users",
 						"CreateUser",
 						""
 					]
@@ -69,7 +75,13 @@
 			"name": "actualiza un usuario",
 			"request": {
 				"method": "PUT",
-				"header": [],
+				"header": [
+					{
+						"key": "X-Requested-With",
+						"value": "XMLHttpRequest",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n\"number_id\": \"543976125\",\r\n\"name\": \"Santiago\",\r\n\"last_name\": \"Mancera\",\r\n\"email\": \"s@gmail.com\",\r\n\"password\": \"123456789\"\r\n}",
