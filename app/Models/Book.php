@@ -32,7 +32,7 @@ class Book extends Model
         return $this->belongsTo(Author::class, 'author_id', 'id');
     }
 
-    public function Lends(): HasMany
+    public function Lends()
     {
         return $this->hasMany(Lend::class, 'book_id', 'id');
     }

@@ -22,17 +22,17 @@ class Lend extends Model
     ];
 
   
-    public function Book(): BelongsTo
+    public function Book()
     {
         return $this->belongsTo(Book::class, 'book_id', 'id');
     }
 
-    public function Owner(): BelongsTo
+    public function Owner()
     {
         return $this->belongsTo(User::class, 'owner_user_id', 'id');
     }
 
-    public function Customer(): BelongsTo
+    public function Customer()
     {
         return $this->belongsTo(User::class, 'customer_user_id', 'id');
     }

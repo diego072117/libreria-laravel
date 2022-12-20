@@ -106,6 +106,90 @@
 				"header": []
 			},
 			"response": []
+		},
+		{
+			"name": "Crear Lend",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"owner_user_id\":\"1\", \r\n        \"customer_user_id\":\"9\",\r\n        \"book_id\":\"4\",\r\n        \"date_out\":\"2022-12-20\",\r\n        \"date_in\":\"2022-12-21\",\r\n        \"status\":\"lend\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/Lends/CreateLend/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"Lends",
+						"CreateLend",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Lends By User",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/Users/GetAllLendsByUser/9",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"Users",
+						"GetAllLendsByUser",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Users With Lends",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/Users/GetAllUsersWithLends/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"Users",
+						"GetAllUsersWithLends",
+						""
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
