@@ -9,6 +9,21 @@ use App\Http\Requests\User\UpdateUserRequest;
 
 class UserController extends Controller
 {
+
+    public function showAllUsers()
+    {
+        $users = $this->getAllUsers()->original['users'];
+        return view('users.index',compact('users'));
+    }
+
+    
+    public function showCreateUser()
+    {
+        return view('users.create-user');
+    }
+
+    
+
     public function getAllUsers(){
       
         $users = User::get();

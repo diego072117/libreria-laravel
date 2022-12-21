@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Auth\ResetPasswordController;
@@ -18,8 +20,15 @@ use App\Http\Controllers\Auth\ConfirmPasswordController;
 |
 */
 
-Route::view('/','home');
+Route::get('/', [BookController::class,'showHomeWithBooks'])->name('home');
 
+Route::group(['prefix'=>'Users','controller' => UserController::class], function(){
+
+    // users
+    Route::get('/','showAllUsers')->name('users');
+    Route::get('/CreateUser','showCreateUser')->name('user.create');
+
+});
 
 Route::group(['controller' => LoginController::class], function(){
 
@@ -67,11 +76,3 @@ Route::get('email/verify/{id}/{hash}', 'verify')->name('verification.verify');
 Route::post('email/resend', 'resend')->name('verification.resend');
   
   });     
-
-
-
-
-
-
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

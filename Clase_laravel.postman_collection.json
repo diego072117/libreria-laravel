@@ -87,7 +87,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\"number_id\": \"543976121\",\r\n\"name\": \"Santiago\",\r\n\"last_name\": \"ci\",\r\n\"email\": \"saaaaa@gmail.com\",\r\n\"password\": \"123456789\",\r\n\"password_confirmation\": \"123456789\"\r\n}",
+							"raw": "{\r\n\"number_id\": \"1031643005\",\r\n\"name\": \"Diego\",\r\n\"last_name\": \"ci\",\r\n\"email\": \"parra9@gmail.com\",\r\n\"password\": \"123456789\",\r\n\"password_confirmation\": \"123456789\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -95,7 +95,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/Users/UpdateUser/27",
+							"raw": "http://127.0.0.1:8000/api/Users/UpdateUser/1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -108,7 +108,7 @@
 								"api",
 								"Users",
 								"UpdateUser",
-								"27"
+								"1"
 							]
 						}
 					},
