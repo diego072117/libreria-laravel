@@ -27,6 +27,7 @@ Route::group(['prefix'=>'Users','controller' => UserController::class], function
     // users
     Route::get('/','showAllUsers')->name('users');
     Route::get('/CreateUser','showCreateUser')->name('user.create');
+    Route::post('/CreateUser','createUser')->name('user.create.post');
 
 });
 

@@ -1,43 +1,89 @@
-<div class="card">
-  <div class="card-header">
-    <h2>{{ $type }} Usuario</h2>
-  </div>
-  <div class="card-body">
+
     <form>
-      <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Nombre</label>
-          <input type="text" class="form-control" id="exampleInputPassword1">
-        </div>
-  
+
         <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Apellido</label>
-          <input type="text" class="form-control" id="exampleInputPassword1">
+            <label for="name" class="form-label">Nombre</label>
+            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
+            value="{{ old('name')? old('name'): '' }}">
+
+            @error('name')
+
+            <samp class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+            </samp>
+                
+            @enderror
         </div>
-  
+
         <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Cedula</label>
-          <input type="number" class="form-control" id="exampleInputPassword1">
-        </div>
-  
-      <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Correo</label>
-        <input type="email" class="form-control" id="exampleInputPassword1">
+          <label for="name" class="form-label">Apellido</label>
+          <input type="text" name="last_name" class="form-control @error('last_name') is-invalid @enderror"
+          value="{{ old('last_name')? old('last_name'): '' }}">
+
+          @error('last_name')
+
+            <samp class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+            </samp>
+              
+          @enderror
       </div>
-  
+
+      <div class="mb-3">
+        <label for="name" class="form-label">Cedula</label>
+        <input type="number" name="number_id" class="form-control @error('number_id') is-invalid @enderror"
+        value="{{ old('number_id')? old('number_id'): '' }}">
+
+        @error('number_id')
+
+          <samp class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+          </samp>
+            
+        @enderror
+     </div>
   
       <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">
-      </div>
+        <label for="name" class="form-label">Correo</label>
+        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
+        value="{{ old('email')? old('email'): '' }}">
+
+        @error('email')
+
+          <samp class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+          </samp>
+            
+        @enderror
+    </div>
   
-      <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Confirmar contraseña</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
-        </div>
+    <div class="mb-3">
+      <label for="name" class="form-label">Contraseña</label>
+      <input type="password" name="password" class="form-control @error('password') is-invalid @enderror">
+
+      @error('password')
+
+        <samp class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+        </samp>
+          
+      @enderror
+    </div>
   
-      <button type="submit" class="btn btn-primary">Submit</button>
   
-  </form>
-  </div>
-</div>
+    <div class="mb-3">
+      <label for="name" class="form-label">Contraseña</label>
+      <input type="password" name="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror">
+
+      @error('password_confirmation')
+
+        <samp class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+        </samp>
+          
+      @enderror
+    </div>
+
+      <a href="/Users" class="btn btn-danger me-2">Cancelar</a>
+      <button type="submit" class="btn btn-primary">Enviar</button>
 

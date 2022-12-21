@@ -55,7 +55,9 @@ class UserController extends Controller
 
         $user = new User($request->all());
         $user->save();
-        return response()->json(['user' => $user],201);
+        if ($request->ajax()) return response()->json(['user' => $user],201);
+        return back()->with('success' ,'Usuario Creado');
+       
 
     }
 

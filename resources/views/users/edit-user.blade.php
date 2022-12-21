@@ -1,5 +1,18 @@
 <x-app>
     <section class="container my-5">
-            <x-user.form-user type="Editar"/>
+        <div class="card">
+
+            <div class="card-header">
+            <h2>Editar Usuario</h2>
+            </div>
+
+            <div class="card-body">
+
+                <form>
+                    <x-user.form-user/>
+                </form>
+
+            </div>
+        </div>
     </section>
 </x-app>
