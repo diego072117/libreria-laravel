@@ -54,7 +54,7 @@ Route::group(['prefix' => 'Categories', 'controller' => CategorieController::cla
 
 //Rutas Books
 Route::group(['prefix' => 'Books', 'controller' => BookController::class], function(){
-    Route::get('/GetAllBooks', 'getAllBooks');//->GET trae data
+    Route::get('/GetAllBooks', 'getAllBooks')->name('books');;//->GET trae data
     Route::get('/GetAnBook/{book}', 'getAnBook');//->GET trae data por id
     Route::post('/CreateBook', 'createBook');//->POST crea data
     Route::put('/UpdateBooks/{book}', 'updateBooks');//->PUT actualza data
@@ -62,6 +62,8 @@ Route::group(['prefix' => 'Books', 'controller' => BookController::class], funct
 
 
 });
+
+
 
 
 

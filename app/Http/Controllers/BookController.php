@@ -14,7 +14,7 @@ class BookController extends Controller
 
     public function getAllBooks(){
       
-        $books = Book::get();
+        $books = Book::with('Author')->get();
         return response()->json(['books' => $books],200);
 
     }
@@ -53,6 +53,13 @@ class BookController extends Controller
 
         $books = $this->getAllBooks()->original['books'];
         return view('index',compact('books')); 
+
+    }
+
+    public function showBooks(){
+
+      
+        return view('books.index'); 
 
     }
 

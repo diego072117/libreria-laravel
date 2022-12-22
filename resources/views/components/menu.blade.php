@@ -37,7 +37,9 @@
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             {{-- Users --}}
-                            <a class="dropdown-item" href="{{ route('users') }}">Users</a>
+                            <a class="dropdown-item" href="{{ route('users') }}">Usuarios</a>
+
+                            <a class="dropdown-item" href="{{ route('books') }}">Libros</a>
 
                             {{-- Logout --}}
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
