@@ -4,7 +4,7 @@
 
         <div class="card-header d-flex justify-content-between">
             <h2>Users</h2>
-            <a href="{{ route('user.create') }}" class="btn btn-primary">New user</a>
+            <a href="{{ route('user.create') }}" class="btn btn-primary btn-sm">New user</a>
         </div>
 
         <div class="card-body">
@@ -16,6 +16,7 @@
                     <th scope="col">Nombre</th>
                     <th scope="col">Apellido</th>
                     <th scope="col">Correo</th>
+                    <th scope="col">Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -26,6 +27,14 @@
                         <td>{{ $user->name}}</td>
                         <td>{{ $user->last_name }}</td>
                         <td>{{ $user->email }}</td>
+                        <td class="d-flex">
+                          <a href="{{ route('user.edit',['user' => $user->id]) }}" class="btn btn-warning btn-sm mx-2">Editar</a>
+                          <form action="{{ route('user.delete',['user' => $user->id]) }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                           <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                          </form>
+                        </td>
                       </tr>
                     @endforeach
                 </tbody>
