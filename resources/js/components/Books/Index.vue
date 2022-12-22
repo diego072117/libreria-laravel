@@ -2,7 +2,7 @@
 	<div class="card mx-5 my-5">
 		<div class="card-header d-flex justify-content-between">
 			<h2>Libros</h2>
-			<a class="btn btn-primary btn-sm">Crear Libro</a>
+			<button @click="openModal" class="btn btn-primary btn-sm">Crear Libro</button>
 		</div>
 
 		<div class="card-body">
@@ -15,6 +15,12 @@
 					<span class="visually-hidden">Loading...</span>
 				</div>
 			</section>
+
+            <section v-if="load_modal">
+                <modal-component/>
+              
+            </section>
+
 		</div>
 	</div>
 </template>
@@ -22,16 +28,21 @@
 <script>
 import axios from 'axios'
 import TableComponent from './Table.vue'
+import ModalComponent from './Modal.vue'
+
 
 export default {
 	components: {
-		TableComponent
+		TableComponent,
+        ModalComponent
 	},
 
 	data() {
 		return {
 			books: [],
-			load: false
+			load: false,
+            load_modal: false,
+            modal: null
 		}
 	},
 	created() {
@@ -45,6 +56,7 @@ export default {
 		},
 		async getBooks() {
 			try {
+                this.load = false
 				const { data } = await axios.get('/api/Books/GetAllBooks')
 				this.books = data.books
 				this.load = true
@@ -58,7 +70,30 @@ export default {
 			// }).catch(error => {
 			//     console.log(error);
 			// })
-		}
+		},
+
+         openModal(){
+            this.load_modal = true
+
+            setTimeout(() => {
+                this.modal = new bootstrap.Modal(document.getElementById('book_modal'),{
+                    Keyboard:false
+                })
+                this.modal.show()
+
+                const modal = document.getElementById('book_modal')
+                modal.addEventListener('hidden.bs.modal', ()=>{
+                    this.load_modal = false
+                })
+
+           }, 200);    
+        },
+
+        closeModal(){
+             this.modal.hide()
+             this.getBooks()
+        }
+        
 	}
 }
 </script>

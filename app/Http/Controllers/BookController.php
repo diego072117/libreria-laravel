@@ -26,7 +26,7 @@ class BookController extends Controller
     }
 
     public function createBook(CreateBookRequest $request){
-
+ 
         $book = new Book($request->all());
         $book->save();
         return response()->json(['book' => $book],201);
