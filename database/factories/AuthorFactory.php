@@ -31,7 +31,7 @@ class AuthorFactory extends Factory
     public function configure(){
         
         return $this->afterCreating(function (Author $author){
-            Book::factory(8)->authorId($author)->create();
+            Book::factory(2)->authorId($author)->create();
         });
 
     }

@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Auth\ResetPasswordController;
@@ -42,13 +44,33 @@ Route::group(['prefix'=>'Books','controller' => BookController::class], function
   // books
   Route::get('/','showBooks')->name('books');
   
-  // Route::get('/CreateUser','showCreateUser')->name('user.create');
-  // Route::post('/CreateUser','createUser')->name('user.create.post');
+  Route::get('/GetAllBooks', 'getAllBooks');//->GET trae data
+  Route::get('/GetAnBook/{book}', 'getAnBook');//->GET trae data por id
+  Route::post('/CreateBook', 'createBook');//->POST crea data
+  Route::post('/UpdateBooks/{book}', 'updateBooks');//->PUT actualza data
+  Route::delete('/DeleteBooks/{book}', 'deleteBooks');//->DELETE elimina data
 
-  // Route::get('/EditUser/{user}','showEditUser')->name('user.edit');
-  // Route::put('/EditUser/{user}','updateUsers')->name('user.edit.put');
+});
 
-  // Route::delete('/DeletetUser/{user}','deleteUsers')->name('user.delete');
+//Rutas Authors
+Route::group(['prefix' => 'Authors', 'controller' => AuthorController::class], function(){
+  Route::get('/GetAllAuthors', 'getAllAuthors');//->GET trae data
+  Route::get('/GetAnAuthor/{author}', 'getAnAuthor');//->GET trae data por id
+  Route::post('/CreateAuthor', 'createAuthor');//->POST crea data
+  Route::put('/UpdateAuthors/{author}', 'updateAuthors');//->PUT actualza data
+  Route::delete('/DeleteAuthors/{author}', 'deleteAuthors');//->DELETE elimina data
+
+
+});
+
+//Rutas Categories
+Route::group(['prefix' => 'Categories', 'controller' => CategorieController::class], function(){
+  Route::get('/GetAllCategories', 'getAllCategories');//->GET trae data
+  Route::get('/GetAnCategorie/{categorie}', 'getAnCategorie');//->GET trae data por id
+  Route::post('/CreateCategorie', 'createCategorie');//->POST crea data
+  Route::put('/UpdateCategories/{categorie}', 'updateCategories');//->PUT actualza data
+  Route::delete('/DeleteCategories/{categorie}', 'deleteCategories');//->DELETE elimina data
+
 
 });
 

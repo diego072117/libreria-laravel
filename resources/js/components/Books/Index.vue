@@ -1,7 +1,7 @@
 <template>
 	<div class="card mx-5 my-5">
 		<div class="card-header d-flex justify-content-between">
-			<h2>Libros</h2>
+			<h2 class="title-books">Libros</h2>
 			<button @click="openModal" class="btn btn-primary btn-sm">Crear Libro</button>
 		</div>
 
@@ -17,13 +17,14 @@
 			</section>
 
             <section v-if="load_modal">
-                <modal-component/>
+                <modal-component :book_data="book"/>
               
             </section>
 
 		</div>
 	</div>
 </template>
+
 
 <script>
 import axios from 'axios'
@@ -42,7 +43,8 @@ export default {
 			books: [],
 			load: false,
             load_modal: false,
-            modal: null
+            modal: null,
+			book: null
 		}
 	},
 	created() {
@@ -57,7 +59,8 @@ export default {
 		async getBooks() {
 			try {
                 this.load = false
-				const { data } = await axios.get('/api/Books/GetAllBooks')
+				// const { data } = await axios.get('/api/Books/GetAllBooks')
+				const { data } = await axios.get('Books/GetAllBooks')
 				this.books = data.books
 				this.load = true
 			} catch (error) {
@@ -84,6 +87,7 @@ export default {
                 const modal = document.getElementById('book_modal')
                 modal.addEventListener('hidden.bs.modal', ()=>{
                     this.load_modal = false
+					this.book = null
                 })
 
            }, 200);    
@@ -92,7 +96,11 @@ export default {
         closeModal(){
              this.modal.hide()
              this.getBooks()
-        }
+        },
+		editBook(book){
+			this.book = book
+			this.openModal()
+		}
         
 	}
 }
