@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\UserController;
@@ -22,9 +24,25 @@ use App\Http\Controllers\Auth\ConfirmPasswordController;
 |
 */
 
+Route::get('/test', function(){
+    
+     
+      // $users = User::get(); 
+      // foreach ($users as $user) {
+      //   if($user->number_id == 1031643005){
+      //     $user->assignRole('admin');
+      //   }else{
+      //     $user->assignRole('user');
+      //   }
+        
+      // }
+      // Role::create(['name' => 'user']);
+      // return Role::all()->pluck('name');
+});
+
 Route::get('/', [BookController::class,'showHomeWithBooks'])->name('home');
 
-Route::group(['prefix'=>'Users','controller' => UserController::class], function(){
+Route::group(['prefix'=>'Users','middleware' =>['auth', 'role:admin'], 'controller' => UserController::class], function(){
 
     // users
     Route::get('/','showAllUsers')->name('users');
@@ -39,17 +57,17 @@ Route::group(['prefix'=>'Users','controller' => UserController::class], function
 
 });
 
-Route::group(['prefix'=>'Books','controller' => BookController::class], function(){
+Route::group(['prefix'=>'Books',['middleware' => ['auth', 'role:admin']],'controller' => BookController::class], function(){
 
   // books
-  Route::get('/','showBooks')->name('books');
-  
-  Route::get('/GetAllBooks', 'getAllBooks');//->GET trae data
-  Route::get('/GetAnBook/{book}', 'getAnBook');//->GET trae data por id
-  Route::post('/CreateBook', 'createBook');//->POST crea data
-  Route::post('/UpdateBooks/{book}', 'updateBooks');//->PUT actualza data
-  Route::delete('/DeleteBooks/{book}', 'deleteBooks');//->DELETE elimina data
+    Route::get('/','showBooks')->name('books');
 
+    Route::get('/GetAllBooks', 'getAllBooks');//->GET trae data
+    Route::get('/GetAnBook/{book}', 'getAnBook');//->GET trae data por id
+    Route::post('/CreateBook', 'createBook');//->POST crea data
+    Route::post('/UpdateBooks/{book}', 'updateBooks');//->PUT actualza data
+    Route::delete('/DeleteBooks/{book}', 'deleteBooks');//->DELETE elimina data
+  
 });
 
 //Rutas Authors

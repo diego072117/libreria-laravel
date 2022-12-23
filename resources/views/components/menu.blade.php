@@ -34,12 +34,15 @@
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->full_name }}
                         </a>
-
+                       
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            {{-- Users --}}
-                            <a class="dropdown-item" href="{{ route('users') }}">Usuarios</a>
+                            @role('admin')
+                                {{-- Users --}}
+                                <a class="dropdown-item" href="{{ route('users') }}">Usuarios</a>
 
-                            <a class="dropdown-item" href="{{ route('books') }}">Libros</a>
+                                {{-- Books --}}
+                                <a class="dropdown-item" href="{{ route('books') }}">Libros</a>
+                            @endrole
 
                             {{-- Logout --}}
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();

@@ -10,7 +10,7 @@
 
                 <form action="{{route('user.create.post')}}" method="POST">
                     @csrf
-                    <x-user.form-user/>
+                    <x-user.form-user :roles="$roles"/>
                 </form>
 
             </div>
