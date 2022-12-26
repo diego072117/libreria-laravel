@@ -63,6 +63,7 @@ Route::group(['prefix'=>'Books',['middleware' => ['auth', 'role:admin']],'contro
     Route::get('/','showBooks')->name('books');
 
     Route::get('/GetAllBooks', 'getAllBooks');//->GET trae data
+    Route::get('/GetAllBooksDataTable', 'getAllBooksForDataTable');//->GET trae data
     Route::get('/GetAnBook/{book}', 'getAnBook');//->GET trae data por id
     Route::post('/CreateBook', 'createBook');//->POST crea data
     Route::post('/UpdateBooks/{book}', 'updateBooks');//->PUT actualza data

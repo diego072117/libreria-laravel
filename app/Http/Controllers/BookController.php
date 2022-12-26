@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\Book\CreateBookRequest;
 use App\Http\Requests\Book\UpdateBookRequest;
 
@@ -20,7 +21,26 @@ class BookController extends Controller
         return response()->json(['books' => $books],200);
 
     }
-    
+
+    public function getAllBooksForDataTable(){
+      
+        $books = Book::with('Author', 'Category');
+        return DataTables::of($books)->addColumn('action', function ($row ){
+            return "<a
+            href='#'
+            onclick='event.preventDefault();'
+            data-id='{$row->id}'
+            role='edit'
+            class='btn btn-warning btn-sm'>Edit</a>
+            <a
+            href='#'
+            onclick='event.preventDefault();'
+            data-id='{$row->id}'
+            role='delete'
+            class='btn btn-danger btn-sm'>Delete</a>";
+        })->rawColumns(['action'])->make();
+
+    }
 
     public function getAnBook(Book $book){
 

@@ -17,6 +17,8 @@
         "vue": "^3.2.37"
     },
     "dependencies": {
+        "datatables.net-bs5": "^1.13.1",
+        "jquery": "^3.6.3",
         "path": "^0.12.7",
         "sweetalert2": "^11.6.16",
         "vue-select": "^4.0.0-beta.6"

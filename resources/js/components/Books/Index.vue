@@ -6,15 +6,16 @@
 		</div>
 
 		<div class="card-body">
-			<section class="table-responsive d-flex" v-if="load">
+			<table-component ref="table"/>
+			<!-- <section class="table-responsive d-flex" v-if="load">
 				<table-component :books_data="books" />
-			</section>
+			</section> -->
             <!-- Load -->
-			<section v-else class="d-flex justify-content-center my-3">
+			<!-- <section v-else class="d-flex justify-content-center my-3">
 				<div class="spinner-border text-secondary" role="status">
 					<span class="visually-hidden">Loading...</span>
-				</div>
-			</section>
+				</div> -->
+			<!-- </section> -->
 
             <section v-if="load_modal">
                 <modal-component :book_data="book"/>
@@ -40,23 +41,23 @@ export default {
 
 	data() {
 		return {
-			books: [],
-			load: false,
+			//books: [],
+			//load: false,
             load_modal: false,
             modal: null,
 			book: null
 		}
 	},
-	created() {
+	/*created() {
 		this.index()
-	},
+	},*/
 	methods: {
-		async index() {
+		/*async index() {
 			await this.getBooks()
 			// this.books = await this.getBooks()
 			// console.log(this.books);
-		},
-		async getBooks() {
+		},*/
+		/*async getBooks() {
 			try {
                 this.load = false
 				// const { data } = await axios.get('/api/Books/GetAllBooks')
@@ -73,7 +74,7 @@ export default {
 			// }).catch(error => {
 			//     console.log(error);
 			// })
-		},
+		},*/
 
          openModal(){
             this.load_modal = true
@@ -95,11 +96,14 @@ export default {
 
         closeModal(){
              this.modal.hide()
-             this.getBooks()
+             this.$refs.table.datatable.destroy()
+			 this.$refs.table.index() 
+			 
         },
 		editBook(book){
 			this.book = book
 			this.openModal()
+			
 		}
         
 	}
